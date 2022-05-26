@@ -67,17 +67,3 @@ if __name__ == "__main__":
 
     filepath = Path('../datasets/df_clean.csv')
     df_clean.to_csv(filepath)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
