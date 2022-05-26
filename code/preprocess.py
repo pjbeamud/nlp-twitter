@@ -1,20 +1,5 @@
 import pandas as pd
-import numpy as np
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.naive_bayes import BernoulliNB
-from sklearn.svm import LinearSVC
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-from sklearn.metrics import plot_confusion_matrix
-from nltk.tokenize import RegexpTokenizer
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud
-import seaborn as sns
-import spacy
 import json
 import re
 import string
@@ -82,17 +67,3 @@ if __name__ == "__main__":
 
     filepath = Path('../datasets/df_clean.csv')
     df_clean.to_csv(filepath)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
