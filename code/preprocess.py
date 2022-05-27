@@ -62,8 +62,15 @@ if __name__ == "__main__":
     development = pd.read_csv('../datasets/development.txt', sep='\t', names = names_columns)
     full = train.append(development)
 
-    distribution(full)
-    df_clean = processing(full)
+    train = False
+    if train:
+        distribution(full)
+        df_clean = processing(full)
 
-    filepath = Path('../datasets/df_clean.csv')
-    df_clean.to_csv(filepath)
+        filepath = Path('../datasets/df_clean.csv')
+        df_clean.to_csv(filepath)
+    else:
+        test_clean = processing(test)
+
+        filepath = Path('../datasets/test_clean.csv')
+        test_clean.to_csv(filepath)

@@ -45,26 +45,35 @@ def worclouds(df):
                 collocations=False).generate(" ".join(data_neg))
     plt.title('Negative')
     plt.imshow(wc_N)
+    plt.show()
     plt.figure(figsize = (20,20))
     wc_P = WordCloud(max_words = 1000 , width = 1600 , height = 800,
                 collocations=False).generate(" ".join(data_pos))
     plt.title('Positive')
     plt.imshow(wc_P)    
+    plt.show()
     plt.figure(figsize = (20,20))
     wc_None = WordCloud(max_words = 1000 , width = 1600 , height = 800,
                 collocations=False).generate(" ".join(data_none))
     plt.title('None')
     plt.imshow(wc_None)    
+    plt.show()
     plt.figure(figsize = (20,20))
     wc_Neu = WordCloud(max_words = 1000 , width = 1600 , height = 800,
                 collocations=False).generate(" ".join(data_neu))
     plt.title('NEU')
     plt.imshow(wc_Neu)
+    plt.show()
 
 
 if __name__ == "__main__":
     nlp = spacy.load('es_core_news_md')
-    df_clean = pd.read_csv('../datasets/df_clean.csv')
+    train = False
+    if train:
+        df_clean = pd.read_csv('../datasets/df_clean.csv')
+    else:
+        df_clean = pd.read_csv('../datasets/test_clean.csv')
+
 
     tokenizer = RegexpTokenizer(r'\w+')
     df_clean['tokens'] = df_clean['text'].apply(tokenizer.tokenize)
@@ -87,6 +96,9 @@ if __name__ == "__main__":
         df_stems_freq['stems'].value_counts()[0:10].plot(kind='bar', title='stems')
         plt.show()
 
-    filepath = Path('../datasets/df_tokenized.csv')
-    df_clean.to_csv(filepath)
-    
+    if train:
+        filepath = Path('../datasets/df_tokenized.csv')
+        df_clean.to_csv(filepath)
+    else:
+        filepath = Path('../datasets/test_tokenized.csv')
+        df_clean.to_csv(filepath)
