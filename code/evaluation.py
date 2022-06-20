@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import classification_report, accuracy_score, f1_score, recall_score
 
 def working_dataset(df):
     X_tokens = [' '.join(token) for token in list(df['tokens'])]
@@ -26,8 +26,12 @@ def resultsLogReg(X_train, X_test, y_train, y_test):
     print("Classification Report for Logistic Regression")
     print(classification_report(y_test, y_pred))
     accuracy = accuracy_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred, average='weighted')
+    recall = recall_score(y_test, y_pred, average='weighted')
     print("--------------------")
     print("Accuracy for Logistic Regression:", accuracy)
+    print("f1 score:", f1)
+    print("recall score:", recall)
     return y_pred, accuracy
 
 def resultsSVC(X_train, X_test, y_train, y_test):
@@ -40,8 +44,12 @@ def resultsSVC(X_train, X_test, y_train, y_test):
     print("Classification Report for SVC")
     print(classification_report(y_test, y_pred))
     accuracy = accuracy_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred, average='weighted')
+    recall = recall_score(y_test, y_pred, average='weighted')
     print("--------------------")
     print("Accuracy for SVC:", accuracy)
+    print("f1 score:", f1)
+    print("recall score:", recall)
     return y_pred, accuracy
 
 def resultsRF(X_train, X_test, y_train, y_test):
@@ -55,8 +63,12 @@ def resultsRF(X_train, X_test, y_train, y_test):
     print("Classification Report for RF")
     print(classification_report(y_test, y_pred))
     accuracy = accuracy_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred,average='weighted')
+    recall = recall_score(y_test, y_pred, average='weighted')
     print("--------------------")
     print("Accuracy for RF:", accuracy)
+    print("f1 score:", f1)
+    print("recall score:", recall)
     return y_pred, accuracy
 
 if __name__ == "__main__":

@@ -68,7 +68,7 @@ def worclouds(df):
 
 if __name__ == "__main__":
     nlp = spacy.load('es_core_news_md')
-    train = False
+    train = True
     if train:
         df_clean = pd.read_csv('../datasets/df_clean.csv')
     else:
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     df_clean['stems'] = df_clean['tokens'].apply(lambda x: stemming_tokens(x))
     df_clean['lemmas'] = df_clean['text'].apply(lambda x: lemmatizing(x))
 
-    wordclouds = False
+    wordclouds = True
     if wordclouds:
         worclouds(df_clean)
 

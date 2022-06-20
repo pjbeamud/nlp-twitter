@@ -62,7 +62,7 @@ if __name__ == "__main__":
     development = pd.read_csv('../datasets/development.txt', sep='\t', names = names_columns)
     full = train.append(development)
 
-    train = False
+    train = True
     if train:
         distribution(full)
         df_clean = processing(full)
