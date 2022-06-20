@@ -67,7 +67,7 @@ if __name__ == "__main__":
     X_train_lemmas, X_test_lemmas, y_train_lemmas, y_test_lemmas = train_test_split(working_df['X_lemmas'], working_df['label'],test_size = 0.2, random_state =0)
     X_train_stems, X_test_stems, y_train_stems, y_test_stems = train_test_split(working_df['X_stems'], working_df['label'],test_size = 0.2, random_state =0)
 
-    vectoriser = TfidfVectorizer(ngram_range=(1,2), max_features=500000)
+    vectoriser = TfidfVectorizer(ngram_range=(1,2), max_features=10000)
     print("Results for tokens")
     y_pred_tokens_log, accuracy_tokens_log = resultsLogReg(X_train_tokens, X_test_tokens, y_train_tokens, y_test_tokens)
     y_pred_tokens_SVC, accuracy_tokens_SVC = resultsSVC(X_train_tokens, X_test_tokens, y_train_tokens, y_test_tokens)

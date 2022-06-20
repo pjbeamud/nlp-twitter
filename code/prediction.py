@@ -7,7 +7,7 @@ from sklearn.svm import LinearSVC
 from pathlib import Path
 
 def modelSVC(X_train, y_train, X_test):
-    vectoriser = TfidfVectorizer(ngram_range=(1,2), max_features=500000)
+    vectoriser = TfidfVectorizer(ngram_range=(1,2), max_features=10000)
     vectoriser.fit(X_train)
     X_train = vectoriser.transform(X_train)
     X_test = vectoriser.transform(X_test)
@@ -36,8 +36,26 @@ if __name__ == "__main__":
     d = {'id': test_id, 'label': test_label}
     results = pd.DataFrame(data=d)
 
-    filepath = Path('../datasets/results.txt')
+    filepath = Path('../datasets/results_tokens.txt')
     results.to_csv(path_or_buf=filepath, sep="\t", index=False, header=False)
+
+    test_label = modelSVC(train['X_lemmas'], train['label'], test['X_lemmas'])
+
+    d = {'id': test_id, 'label': test_label}
+    results = pd.DataFrame(data=d)
+
+    filepath = Path('../datasets/results_lemmas.txt')
+    results.to_csv(path_or_buf=filepath, sep="\t", index=False, header=False)
+
+    test_label = modelSVC(train['X_stems'], train['label'], test['X_stems'])
+
+    d = {'id': test_id, 'label': test_label}
+    results = pd.DataFrame(data=d)
+
+    filepath = Path('../datasets/results_stems.txt')
+    results.to_csv(path_or_buf=filepath, sep="\t", index=False, header=False)
+
+    
 
 
 
