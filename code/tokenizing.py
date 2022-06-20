@@ -84,7 +84,7 @@ if __name__ == "__main__":
     if wordclouds:
         worclouds(df_clean)
 
-    freq_tables = False
+    freq_tables = True
     if freq_tables:
         df_lemas_freq = freq_table(df_clean[['lemmas', 'label']], 'lemmas')
         df_lemas_freq['lemmas'].value_counts()[0:10].plot(kind='bar', title='lemmas')
